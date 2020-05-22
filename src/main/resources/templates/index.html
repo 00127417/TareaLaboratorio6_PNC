@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Ingresar Contribuyente</title>
+</head>
+<body>
+	<form th:action="@{/save}" method="post" th:object="${contribuyente}" >
+	
+		<select th:field = "*{cImportancia}">
+        	<option value="">Selecciona importancia</option>
+        	<option th:each="importancia : ${importancias}"
+                th:value="${importancia.codigoImportancia}"
+                th:text="${importancia.importancia}"></option>
+    	</select>
+		<br><span th:errors="*{cImportancia}" style="color:#FF0000"></span><br>
+		
+		<br><label>Nombre</label>
+		<input type="text" th:field="*{nombre}"><br>
+		<span th:errors="*{Nombre}" style="color:#FF0000"></span><br>
+		
+		<label>Apellido</label>
+		<input type="text" th:field="*{apellido}"><br>		
+		<span th:errors="*{Apellido}" style="color:#FF0000"></span><br>
+		
+		<label>NIT</label>
+		<input type="text" th:field=*{nit}><br>
+		<span th:errors="*{Nit}" style="color:#FF0000"></span><br>
+			
+		<input type="submit" value="Guardar">		
+	</form>
+	
+	<br><button onclick="window.location.href='/contribuyentes'">LISTADOS DE CONTRIUYENTES</button>
+</body>
+</html>
